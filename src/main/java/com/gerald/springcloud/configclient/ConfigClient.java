@@ -8,14 +8,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
-public class ConfigClient 
-{
+public class ConfigClient {
     @Value("${common.name}")
     private String name;
     
-    @RequestMapping("/")
+    @Value("${default}")
+    private Integer defaultValue;
+    
+    @RequestMapping("/hello")
     public String hello() {
         return name;
+    }
+    
+    @RequestMapping("/default")
+    public Integer defaultValue() {
+        return defaultValue;
     }
     
     public static void main( String[] args ) {
